@@ -49,14 +49,6 @@ namespace MemoryOptimzer
 			}
 		}
 
-		private void SetprogressBar2(int value)
-		{
-			progressBar2.Invoke(new VoidMethod_Delegate(() =>
-			{
-				progressBar2.Value = value;
-			}));
-		}
-
 		private void SetprogressBar1(int value)
 		{
 			progressBar1.Invoke(new VoidMethod_Delegate(() =>
@@ -90,6 +82,14 @@ namespace MemoryOptimzer
 			}));
 		}
 
+		private void SetLabel1(string str)
+		{
+			label1.Invoke(new VoidMethod_Delegate(() =>
+			{
+				label1.Text = str;
+			}));
+		}
+
 		private void button1_Click(object sender, EventArgs e)
 		{
 			button1.Enabled = false;
@@ -101,6 +101,19 @@ namespace MemoryOptimzer
 				{
 					button1.Enabled = true;
 				}));
+			});
+		}
+
+		private void timer1_Tick(object sender, EventArgs e)
+		{
+			Task.Run(() =>
+			{
+				var info = new SystemInfo();
+				var memoryleft = SystemInfo.MemoryAvailable;
+				var memory = info.PhysicalMemory;
+				var memoryload = 1 - Convert.ToDouble(memoryleft) / memory;
+				SetLabel1($@"内存使用：{Util.CountSize(memory - memoryleft)}/{Util.CountSize(memory)}");
+				SetprogressBar1(Convert.ToInt32(100 * memoryload));
 			});
 		}
 	}

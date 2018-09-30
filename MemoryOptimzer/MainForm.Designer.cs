@@ -28,12 +28,14 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.button1 = new System.Windows.Forms.Button();
 			this.progressBar1 = new System.Windows.Forms.ProgressBar();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.progressBar2 = new System.Windows.Forms.ProgressBar();
 			this.label3 = new System.Windows.Forms.Label();
+			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.SuspendLayout();
 			// 
 			// button1
@@ -93,6 +95,12 @@
 			this.label3.TabIndex = 5;
 			this.label3.Text = "成功负优化：";
 			// 
+			// timer1
+			// 
+			this.timer1.Enabled = true;
+			this.timer1.Interval = 1000;
+			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -105,7 +113,7 @@
 			this.Controls.Add(this.progressBar1);
 			this.Controls.Add(this.button1);
 			this.MaximumSize = new System.Drawing.Size(9999, 170);
-			this.MinimumSize = new System.Drawing.Size(16, 170);
+			this.MinimumSize = new System.Drawing.Size(247, 170);
 			this.Name = "MainForm";
 			this.Text = "MemoryOptimzer";
 			this.ResumeLayout(false);
@@ -121,6 +129,7 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.ProgressBar progressBar2;
 		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Timer timer1;
 	}
 }
 
